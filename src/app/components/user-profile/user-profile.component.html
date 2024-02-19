@@ -1,2 +1,23 @@
 <h1>This is user profile</h1>
-<h4>{{name}}</h4>
+
+<!--Interpolation-->
+<h4>Name - {{name.toUpperCase()}} Status - {{status}} Salary - {{salary}}</h4>
+
+<!--Property Binding-->
+<button [disabled]="isBtnDisabled">Click Me!</button>
+
+<!--Event Binding-->
+<h1>Input Value - {{inputVal}}</h1> 
+<!-- <input type="text" [value]="inputVal" (input)=" onChange($event)"> --> <!--One way data binding-->
+<!--Two way data binding-->
+<input type="text" [(ngModel)] = "inputVal"> 
+
+<div>
+    @for (user of users; track user.name) {
+        @if (user.salary > 10000) {
+            <h4>Name - {{user.name}} Status - {{user.isSingle?"single":"committed"}} Salary - {{user.salary}}</h4> 
+        }@else {
+            <h4>Name - {{user.name}} Status - {{user.isSingle?"single":"committed"}} Salary - hidden</h4> 
+        }
+    }
+</div>

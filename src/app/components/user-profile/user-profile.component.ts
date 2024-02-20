@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, booleanAttribute, numberAttribute } from '@angular/core';
+import { Component, EventEmitter, Input, Output, booleanAttribute, numberAttribute } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { User } from '../../../models/user';
 
 function formatName(value:string) {
   return "Hi " + value
@@ -32,7 +33,12 @@ export class UserProfileComponent {
   //   this.inputVal = value
   // This was helper function for one-way data binding
  //}
-  @Input({alias:"userName", transform: formatName}) name = "";
+  @Input({alias:"userName"}) name = "";
   @Input({transform:booleanAttribute}) isSingle!: boolean;
   @Input({transform:numberAttribute}) salary!: number;
+
+  @Output() myEvent = new EventEmitter<User>()
+  sendData() {
+    this.myEvent.emit({name:this.name, newSalary:25000})
+  }
 }

@@ -4,6 +4,9 @@
   [userName]="u.name"
   [isSingle]="u.isSingle"
   [salary]="u.salary"
+  (myEvent)="receivedData($event)"
 ></app-user-profile>
+
+
 <!-- <app-user-profile  userName="suresh" isSingle="false" salary="60000"></app-user-profile>
 <app-user-profile userName="nitesh" isSingle="true" salary="70000"></app-user-profile> -->
